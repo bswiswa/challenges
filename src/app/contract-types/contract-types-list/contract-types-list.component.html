@@ -1,0 +1,19 @@
+<ul class="list-group list-group-flush">
+  <li
+    *ngFor="let contractType of contractTypes; index as index"
+    class="list-group-item"
+  >
+    <input
+      *ngIf="contractType === editing; else notEditing"
+      [value]="contractType.name"
+      (blur)="onCancelEditing()"
+      (keyup.escape)="onCancelEditing()"
+      (keyup.enter)="onCancelEditing()"
+    />
+    <ng-template #notEditing>
+      <label (click)="onClick(contractType)">
+        {{ contractType.name }}
+      </label>
+    </ng-template>
+  </li>
+</ul>
