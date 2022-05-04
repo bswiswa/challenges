@@ -15,11 +15,11 @@ export class ContractTypesListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onCancelEditing() {
+  onCancel() {
     this.editing = null;
   }
 
-  onClick(contractType: ContractType) {
+  onSelect(contractType: ContractType) {
     this.editing = contractType;
   }
 }

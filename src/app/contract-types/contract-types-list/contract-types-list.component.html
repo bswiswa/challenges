@@ -3,17 +3,16 @@
     *ngFor="let contractType of contractTypes; index as index"
     class="list-group-item"
   >
-    <input
+    <app-contract-type-input
       *ngIf="contractType === editing; else notEditing"
-      [value]="contractType.name"
-      (blur)="onCancelEditing()"
-      (keyup.escape)="onCancelEditing()"
-      (keyup.enter)="onCancelEditing()"
-    />
+      [contractType]="contractType"
+      (cancel)="onCancel()"
+    ></app-contract-type-input>
     <ng-template #notEditing>
-      <label (click)="onClick(contractType)">
-        {{ contractType.name }}
-      </label>
+      <app-contract-type-item
+        [contractType]="contractType"
+        (select)="onSelect($event)"
+      ></app-contract-type-item>
     </ng-template>
   </li>
 </ul>
