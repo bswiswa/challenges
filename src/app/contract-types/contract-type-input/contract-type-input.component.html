@@ -1,6 +1,16 @@
-<input
-  [value]="contractType.name"
-  (blur)="onCancel()"
-  (keyup.escape)="onCancel()"
-  (keyup.enter)="onCancel()"
-/>
+<form [formGroup]="contractForm">
+  <input
+    formControlName="name"
+    name="name"
+    placeholder="name"
+    [value]="contractType.name"
+    (blur)="onCancel()"
+    (keyup.escape)="onCancel()"
+    (keyup.enter)="onCancel()"
+    [class.invalid]="contractForm.get('name')?.hasError('required')"
+    (keyup)="log()"
+  />
+</form>
+<span *ngIf="contractForm.get('name')?.hasError('required')" class="error">
+  Name is required
+</span>
