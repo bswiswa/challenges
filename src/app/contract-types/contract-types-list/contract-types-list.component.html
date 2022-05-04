@@ -4,14 +4,14 @@
     class="list-group-item"
   >
     <input
-      *ngIf="contractType === editing; else notEditing"
+      *ngIf="contractType.editing; else notEditing"
       [value]="contractType.name"
-      (blur)="onCancelEditing()"
-      (keyup.escape)="onCancelEditing()"
-      (keyup.enter)="onCancelEditing()"
+      (blur)="onCancelEditing(index)"
+      (keyup.escape)="onCancelEditing(index)"
+      (keyup.enter)="onCancelEditing(index)"
     />
     <ng-template #notEditing>
-      <label (click)="onClick(contractType)">
+      <label (click)="onClick(index)">
         {{ contractType.name }}
       </label>
     </ng-template>
